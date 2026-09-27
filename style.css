@@ -409,13 +409,12 @@ body {
 }
 
 .envelope-wrapper {
-    position: relative;
+   position: relative;
     width: 200px;
     height: 110px;
     margin: 20px auto;
     cursor: pointer;
     perspective: 1000px;
-    touch-action: manipulation;
 }
 
 .envelope {
@@ -472,11 +471,17 @@ body {
     padding: 10px;
     text-align: left;
     box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+
     transition:
         transform 0.4s ease 0s,
         height 0.4s ease 0s;
+
     overflow: hidden;
 
+    /* Important for iPhone scrolling */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
 }
 
 .letter-text {
@@ -506,20 +511,14 @@ body {
 }
 
 .envelope-wrapper.open .letter {
-    transform: translateY(-90px);
-    height: 175px;
-    z-index: 7;
     overflow-y: auto;
-    width: 220px;
-    left: -10px;
-    padding: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-    transition:
-        transform 0.4s ease 0.3s,
-        height 0.4s ease 0.3s,
-        width 0.4s ease 0.3s,
-        left 0.4s ease 0.3s;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+}
+
+.envelope-wrapper.open {
+    touch-action: pan-y;
 }
 
 .envelope-wrapper.open .letter .letter-text {
