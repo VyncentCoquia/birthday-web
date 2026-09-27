@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Birthday, My Love!</title>
+    <!-- Connected to standard style.css for clean repository management -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- iPhone Mobile Safari Music Unlock Gate -->
+    <div class="welcome-overlay" id="welcomeOverlay">
+        <div class="welcome-content">
+            <h2>A Special Surprise For You</h2>
+            <p>Turn your volume up and tap below to enter!</p>
+            <button class="enter-btn" id="enterBtn" style="opacity: 1; cursor: pointer;">Enter</button>
+        </div>
+    </div>
+
+    <!-- Background Audio Player pointing to your local track -->
+    <audio id="bgMusic" loop>
+        <source src="siyempre.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Main Container Card Grid System -->
+    <main class="card-container" id="mainContent">
+        <header class="hero-section">
+            <h1 class="title animate-pop">Happy Birthday, My Baby Loves!</h1>
+            <p class="subtitle">Today is all about celebrating you.</p>
+        </header>
+
+        <!-- Mobile-Optimized Photo Gallery Grid -->
+        <section class="photo-gallery">
+            <div class="photo-card"><img src="1.jpg" alt="Memory 1"></div>
+            <div class="photo-card"><img src="2.jpg" alt="Memory 2"></div>
+            <div class="photo-card"><img src="3.jpg" alt="Memory 3"></div>
+            <div class="photo-card"><img src="4.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="5.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="6.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="7.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="8.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="9.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="10.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="11.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="12.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="13.jpg" alt="Memory 4"></div>
+            <div class="photo-card"><img src="14.jpg" alt="Memory 4"></div>
+            
+        </section>
+
+        <!-- Dynamic Music Visualizer Interface -->
+        <section class="music-box" id="musicToggle">
+            <div class="music-info">
+                <span class="music-icon wave-active" id="musicIcon">🎵</span>
+                <div>
+                    <p class="song-title">Siyempre</p>
+                    <p class="song-artist">Willie Revillame</p>
+                </div>
+            </div>
+            <div class="visualizer-bars" id="visualizer">
+                <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
+            </div>
+            <p class="music-note">Tap this box to Pause / Play music</p>
+        </section>
+
+        <!-- 🎁 Dynamic Vector Gift Box Component -->
+        <section class="gift-section">
+            <h3>Tap your birthday gift!</h3>
+            <div class="gift-box-wrapper" id="giftBox" style="position: relative; z-index: 20;">
+                <svg id="giftSvg" xmlns="http://w3.org" viewBox="0 0 24 24" width="75" height="75" style="display:block; margin:0 auto; transition: transform 0.4s ease; pointer-events: none;">
+                    <path fill="#ff4d6d" d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35-.54-.81-1.45-1.35-2.5-1.35-1.66 0-3 1.34-3 3 0 .35.07.69.18 1H4c-1.1 0-2 .9-2 2v3c0 .55.45 1 1 1h1v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8h1c.55 0 1-.45 1-1V8c0-1.1-.9-2-2-2zM15 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-6 1c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zM4 8h7v3H4V8zm3 14c-.55 0-1-.45-1-1v-8h4v9H7zm11-1c0 .55-.45 1-1 1h-3v-9h4v8zm2-11h-7v3h7V8z"/>
+                </svg>
+            </div>
+            <div class="gift-surprise" id="giftSurprise">
+                <p>Surprise! You have won all my love forever and ever!</p>
+            </div>
+        </section>
+
+        <!-- 💌 Animated Pop-Up Envelope Element -->
+        <section class="envelope-section">
+            <h3>Tap to open your love note!</h3>
+            <div class="envelope-wrapper" id="envelope">
+                <div class="envelope">
+                    <div class="flap"></div>
+                    <div class="letter">
+                        <p class="letter-text">
+                            Happy birthday Rizza Gwen my baby, my loves, my pretty girlfriend! 
+                            I want you to know how incredibly blessed I am to have you in my life. 
+                            Thank you for every smile, every beautiful memory, and for just being you. 
+                            I love you so, so much, today and every single day. Maligayang kaarawan!
+                        </p>
+                        <p class="signature">— Vyncent Satoru</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 🎂 Dynamic Vector Birthday Cake Component -->
+        <section class="cake-area">
+            <h3>Make a Wish & Blow Out the Candle!</h3>
+            <div class="cake-wrapper" style="position: relative; width: 85px; height: 85px; margin: 15px auto 0 auto; z-index: 20;">
+                <div class="candle"><div class="flame" id="flame"></div></div>
+                <svg id="birthdayCake" xmlns="http://w3.org" viewBox="0 0 24 24" width="85" height="85" style="display:block; pointer-events: none;">
+                    <path fill="#ffb3c1" d="M12 6c1.11 0 2-.89 2-2 0-.82-.74-1.55-1.55-1.93-.28-.13-.62-.13-.9 0C10.74 2.45 10 3.18 10 4c0 1.11.89 2 2 2zm9 6h-1V9c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v3H3c-.55 0-1 .45-1 1v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-8c0-.55-.45-1-1-1zm-2 8H5v-2h14v2zm0-4H5v-3h14v3z"/>
+                </svg>
+            </div>
+            <p class="interaction-hint" id="statusMessage">Tap the flame to blow it out!</p>
+        </section>
+    </main>
+
+
+    <!-- 📸 Full-Screen Memory Photo Viewer -->
+    <div class="photo-lightbox" id="photoLightbox" aria-hidden="true">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close photo viewer">×</button>
+
+        <button class="lightbox-arrow lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="Memory photo">
+            <div class="lightbox-caption">
+                <span id="lightboxCounter">1 / 4</span>
+                <span id="lightboxHint">Swipe or use the arrows</span>
+            </div>
+        </div>
+
+        <button class="lightbox-arrow lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+    </div>
+
+    <script>
+        const welcomeOverlay = document.getElementById('welcomeOverlay');
+        const bgMusic = document.getElementById('bgMusic');
+        const enterBtn = document.getElementById('enterBtn');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        const heartsContainer = document.getElementById('heartsContainer');
+        const visualizer = document.getElementById('visualizer');
+
+        // ------------------------------------------------------------
+        // iPhone / desktop-safe interaction
+        // Use pointer events instead of separate click + touchstart
+        // handlers. This prevents double-firing on mobile Safari.
+        // ------------------------------------------------------------
+
+        enterBtn.addEventListener('pointerup', () => {
+            welcomeOverlay.style.display = 'none';
+
+            // Start the ambient hearts only once.
+            if (!window.ambientHeartsStarted) {
+                window.ambientHeartsStarted = true;
+                setInterval(createAmbientHeart, 600);
+            }
+
+            // This is still inside a user gesture, so iOS Safari can
+            // normally start the audio here.
+            bgMusic.play().catch(error => {
+                console.log("Audio waiting for another user interaction:", error);
+            });
+        });
+
+        musicToggle.addEventListener('pointerup', () => {
+            if (bgMusic.paused) {
+                bgMusic.play().catch(error => console.log(error));
+                musicIcon.classList.add('wave-active');
+                visualizer.classList.remove('paused');
+            } else {
+                bgMusic.pause();
+                musicIcon.classList.remove('wave-active');
+                visualizer.classList.add('paused');
+            }
+        });
+
+        // ------------------------------------------------------------
+        // Confetti
+        // A canvas-based confetti effect is used instead of relying on
+        // CSS hearts alone. It works in Live Server, desktop browsers,
+        // iPhone Safari and other modern mobile browsers.
+        // ------------------------------------------------------------
+
+        const confettiCanvas = document.createElement('canvas');
+        confettiCanvas.id = 'confettiCanvas';
+
+        Object.assign(confettiCanvas.style, {
+            position: 'fixed',
+            inset: '0',
+            width: '100%',
+            height: '100%',
+            pointerEvents: 'none',
+            zIndex: '99999'
+        });
+
+        document.body.appendChild(confettiCanvas);
+
+        const confettiCtx = confettiCanvas.getContext('2d');
+        let confettiPieces = [];
+        let confettiAnimationRunning = false;
+
+        function resizeConfettiCanvas() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            confettiCanvas.width = Math.floor(window.innerWidth * dpr);
+            confettiCanvas.height = Math.floor(window.innerHeight * dpr);
+
+            confettiCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        window.addEventListener('resize', resizeConfettiCanvas);
+        resizeConfettiCanvas();
+
+        function launchConfetti(amount = 100) {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+
+            for (let i = 0; i < amount; i++) {
+                confettiPieces.push({
+                    x: width * (0.15 + Math.random() * 0.7),
+                    y: height * 0.35,
+                    vx: (Math.random() - 0.5) * 12,
+                    vy: -(Math.random() * 10 + 7),
+                    gravity: 0.25 + Math.random() * 0.12,
+                    drag: 0.985,
+                    size: Math.random() * 7 + 4,
+                    rotation: Math.random() * Math.PI * 2,
+                    rotationSpeed: (Math.random() - 0.5) * 0.25,
+                    life: 0,
+                    maxLife: Math.random() * 90 + 120,
+                    shape: Math.random() > 0.5 ? 'rect' : 'circle'
+                });
+            }
+
+            if (!confettiAnimationRunning) {
+                confettiAnimationRunning = true;
+                requestAnimationFrame(updateConfetti);
+            }
+        }
+
+        function updateConfetti() {
+            confettiCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+            confettiPieces = confettiPieces.filter(piece => piece.life < piece.maxLife);
+
+            confettiPieces.forEach(piece => {
+                piece.life++;
+                piece.vx *= piece.drag;
+                piece.vy += piece.gravity;
+                piece.x += piece.vx;
+                piece.y += piece.vy;
+                piece.rotation += piece.rotationSpeed;
+
+                // Cycle through several bright colors without needing
+                // an external library.
+                const colors = [
+                    '#ff4d6d',
+                    '#ffb3c1',
+                    '#ffd166',
+                    '#06d6a0',
+                    '#118ab2',
+                    '#9b5de5',
+                    '#f15bb5'
+                ];
+
+                confettiCtx.save();
+                confettiCtx.translate(piece.x, piece.y);
+                confettiCtx.rotate(piece.rotation);
+
+                confettiCtx.fillStyle =
+                    colors[Math.floor(piece.life / 5) % colors.length];
+
+                if (piece.shape === 'rect') {
+                    confettiCtx.fillRect(
+                        -piece.size / 2,
+                        -piece.size / 2,
+                        piece.size,
+                        piece.size * 1.8
+                    );
+                } else {
+                    confettiCtx.beginPath();
+                    confettiCtx.arc(
+                        0,
+                        0,
+                        piece.size / 2,
+                        0,
+                        Math.PI * 2
+                    );
+                    confettiCtx.fill();
+                }
+
+                confettiCtx.restore();
+            });
+
+            if (confettiPieces.length > 0) {
+                requestAnimationFrame(updateConfetti);
+            } else {
+                confettiAnimationRunning = false;
+                confettiCtx.clearRect(
+                    0,
+                    0,
+                    window.innerWidth,
+                    window.innerHeight
+                );
+            }
+        }
+
+
+        // ------------------------------------------------------------
+        // 📸 Interactive Memory Gallery / Lightbox
+        // ------------------------------------------------------------
+
+        const photoCards = Array.from(document.querySelectorAll('.photo-card'));
+        const photoLightbox = document.getElementById('photoLightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.getElementById('lightboxClose');
+        const lightboxPrev = document.getElementById('lightboxPrev');
+        const lightboxNext = document.getElementById('lightboxNext');
+        const lightboxCounter = document.getElementById('lightboxCounter');
+
+        let currentPhotoIndex = 0;
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        function openPhoto(index) {
+            if (!photoCards.length) return;
+
+            currentPhotoIndex =
+                (index + photoCards.length) % photoCards.length;
+
+            const image = photoCards[currentPhotoIndex].querySelector('img');
+
+            if (!image) return;
+
+            lightboxImage.src = image.currentSrc || image.src;
+            lightboxImage.alt = image.alt || `Memory ${currentPhotoIndex + 1}`;
+            lightboxCounter.textContent =
+                `${currentPhotoIndex + 1} / ${photoCards.length}`;
+
+            photoLightbox.classList.add('show');
+            photoLightbox.setAttribute('aria-hidden', 'false');
+
+            // Prevent the page behind the viewer from scrolling.
+            document.body.classList.add('lightbox-open');
+
+            // Reset the image animation each time.
+            lightboxImage.classList.remove('lightbox-image-enter');
+            void lightboxImage.offsetWidth;
+            lightboxImage.classList.add('lightbox-image-enter');
+        }
+
+        function closePhoto() {
+            photoLightbox.classList.remove('show');
+            photoLightbox.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('lightbox-open');
+
+            // Clear the image after the closing animation.
+            setTimeout(() => {
+                if (!photoLightbox.classList.contains('show')) {
+                    lightboxImage.src = '';
+                }
+            }, 250);
+        }
+
+        function showNextPhoto() {
+            openPhoto(currentPhotoIndex + 1);
+        }
+
+        function showPreviousPhoto() {
+            openPhoto(currentPhotoIndex - 1);
+        }
+
+        photoCards.forEach((card, index) => {
+            card.addEventListener('pointerup', (event) => {
+                event.preventDefault();
+                openPhoto(index);
+            });
+        });
+
+        lightboxClose.addEventListener('pointerup', (event) => {
+            event.preventDefault();
+            closePhoto();
+        });
+
+        lightboxNext.addEventListener('pointerup', (event) => {
+            event.preventDefault();
+            showNextPhoto();
+        });
+
+        lightboxPrev.addEventListener('pointerup', (event) => {
+            event.preventDefault();
+            showPreviousPhoto();
+        });
+
+        // Close when tapping the dark background.
+        photoLightbox.addEventListener('pointerup', (event) => {
+            if (event.target === photoLightbox) {
+                closePhoto();
+            }
+        });
+
+        // Keyboard support for desktop.
+        document.addEventListener('keydown', (event) => {
+            if (!photoLightbox.classList.contains('show')) return;
+
+            if (event.key === 'Escape') {
+                closePhoto();
+            } else if (event.key === 'ArrowRight') {
+                showNextPhoto();
+            } else if (event.key === 'ArrowLeft') {
+                showPreviousPhoto();
+            }
+        });
+
+        // iPhone swipe support.
+        photoLightbox.addEventListener('touchstart', (event) => {
+            const touch = event.changedTouches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+        }, { passive: true });
+
+        photoLightbox.addEventListener('touchend', (event) => {
+            const touch = event.changedTouches[0];
+
+            const deltaX = touch.clientX - touchStartX;
+            const deltaY = touch.clientY - touchStartY;
+
+            // Ignore mostly vertical swipes.
+            if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) {
+                return;
+            }
+
+            if (deltaX < 0) {
+                showNextPhoto();
+            } else {
+                showPreviousPhoto();
+            }
+        }, { passive: true });
+
+        // ------------------------------------------------------------
+        // 💌 Envelope
+        // ------------------------------------------------------------
+
+        const envelope = document.getElementById('envelope');
+
+        envelope.addEventListener('pointerup', (e) => {
+            e.preventDefault();
+
+            envelope.classList.toggle('open');
+            launchConfetti(110);
+
+            // Keep the heart effect too.
+            for (let i = 0; i < 15; i++) {
+                createConfettiHeart();
+            }
+        });
+
+        // ------------------------------------------------------------
+        // 🎁 Gift
+        // ------------------------------------------------------------
+
+        const giftBox = document.getElementById('giftBox');
+        const giftSurprise = document.getElementById('giftSurprise');
+        const giftSvg = document.getElementById('giftSvg');
+
+        giftBox.addEventListener('pointerup', (e) => {
+            e.preventDefault();
+
+            if (!giftBox.classList.contains('open')) {
+                giftBox.classList.add('open');
+
+                giftSvg.style.transform = 'scale(0)';
+                giftSvg.style.opacity = '0';
+
+                // Launch immediately so the user sees it on mobile.
+                launchConfetti(140);
+
+                for (let i = 0; i < 30; i++) {
+                    createConfettiHeart();
+                }
+
+                setTimeout(() => {
+                    giftSurprise.classList.add('reveal');
+                }, 400);
+            }
+        });
+
+        // ------------------------------------------------------------
+        // 🎂 Candle
+        // ------------------------------------------------------------
+
+        const flame = document.getElementById('flame');
+        const statusMessage = document.getElementById('statusMessage');
+
+        flame.addEventListener('pointerup', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            flame.style.display = 'none';
+            statusMessage.innerHTML = "Your wish has been sent! I love you!";
+            statusMessage.style.color = "#ff4d6d";
+            statusMessage.style.fontWeight = "bold";
+
+            launchConfetti(130);
+
+            for (let i = 0; i < 25; i++) {
+                createConfettiHeart();
+            }
+        });
+
+        // ------------------------------------------------------------
+        // Floating hearts
+        // ------------------------------------------------------------
+
+        function createAmbientHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.bottom = '-50px';
+            heart.style.fontSize = (Math.random() * 10 + 12) + 'px';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+
+            heartsContainer.appendChild(heart);
+
+            setTimeout(() => heart.remove(), 7000);
+        }
+
+        function createConfettiHeart() {
+            const h = document.createElement('div');
+            h.classList.add('heart');
+            h.innerHTML = '💖';
+            h.style.left = Math.random() * 100 + 'vw';
+            h.style.bottom = '-20px';
+            h.style.fontSize = (Math.random() * 15 + 20) + 'px';
+            h.style.animation =
+                `floatUp ${Math.random() * 1.5 + 1.5}s cubic-bezier(0.1, 0.8, 0.3, 1) forwards`;
+
+            heartsContainer.appendChild(h);
+
+            setTimeout(() => h.remove(), 3000);
+        }
+    </script>
+</body>
+</html>
