@@ -415,6 +415,8 @@ body {
     margin: 20px auto;
     cursor: pointer;
     perspective: 1000px;
+    touch-action: manipulation;
+
 }
 
 .envelope {
@@ -460,28 +462,26 @@ body {
 }
 
 .letter {
-    position: absolute;
-    left: 10px;
-    bottom: 5px;
-    z-index: 2;
-    width: 180px;
-    height: 95px;
-    background: white;
-    border-radius: 6px;
-    padding: 10px;
-    text-align: left;
-    box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
+  position: absolute;
+  left: 10px;
+  bottom: 5px;
+  z-index: 2;
+  width: 180px;
+  height: 95px;
+  background: white;
+  border-radius: 6px;
+  padding: 10px;
+  text-align: left;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.03);
 
-    transition:
-        transform 0.4s ease 0s,
-        height 0.4s ease 0s;
+  transition:
+      transform 0.4s ease 0s,
+      height 0.4s ease 0s;
 
-    overflow: hidden;
+  overflow: hidden;
 
-    /* Important for iPhone scrolling */
-    touch-action: pan-y;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
+  /* iPhone scrolling */
+  -webkit-overflow-scrolling: touch;
 }
 
 .letter-text {
@@ -511,14 +511,35 @@ body {
 }
 
 .envelope-wrapper.open .letter {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-y;
-    overscroll-behavior: contain;
+  transform: translateY(-90px);
+  height: 175px;
+  z-index: 7;
+
+  width: 220px;
+  left: -10px;
+  padding: 15px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* Allow vertical finger scrolling */
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+
+  /* Prevent the scroll gesture from affecting the envelope/page */
+  overscroll-behavior: contain;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+  transition:
+      transform 0.4s ease 0.3s,
+      height 0.4s ease 0.3s,
+      width 0.4s ease 0.3s,
+      left 0.4s ease 0.3s;
 }
 
 .envelope-wrapper.open {
-    touch-action: pan-y;
+  touch-action: pan-y;
 }
 
 .envelope-wrapper.open .letter .letter-text {

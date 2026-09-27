@@ -452,53 +452,55 @@
 
         const envelope = document.getElementById('envelope');
 
-        let envelopeStartX = 0;
+  let envelopeStartX = 0;
 let envelopeStartY = 0;
 let envelopeMoved = false;
 
 envelope.addEventListener('pointerdown', (e) => {
-    envelopeStartX = e.clientX;
-    envelopeStartY = e.clientY;
-    envelopeMoved = false;
+  envelopeStartX = e.clientX;
+  envelopeStartY = e.clientY;
+  envelopeMoved = false;
 });
 
 envelope.addEventListener('pointermove', (e) => {
-    const deltaX = Math.abs(e.clientX - envelopeStartX);
-    const deltaY = Math.abs(e.clientY - envelopeStartY);
+  const deltaX = Math.abs(e.clientX - envelopeStartX);
+  const deltaY = Math.abs(e.clientY - envelopeStartY);
 
-    // If the finger moved, treat it as a swipe/scroll,
-    // not as a tap on the envelope.
-    if (deltaX > 10 || deltaY > 10) {
-        envelopeMoved = true;
-    }
+  if (deltaX > 8 || deltaY > 8) {
+    envelopeMoved = true;
+  }
 });
 
 envelope.addEventListener('pointerup', (e) => {
-    // Don't open/close the envelope after a swipe.
-    if (envelopeMoved) {
-        return;
-    }
 
-    // If the letter is already open and the user is interacting
-    // with the letter, don't toggle the envelope.
-    if (
-        envelope.classList.contains('open') &&
-        e.target.closest('.letter')
-    ) {
-        return;
-    }
+  // Don't toggle the envelope when the user is swiping
+  if (envelopeMoved) {
+    return;
+  }
 
-    e.preventDefault();
+  // If the envelope is already open, tapping the letter
+  // should NOT close it.
+  if (
+    envelope.classList.contains('open') &&
+    e.target.closest('.letter')
+  ) {
+    return;
+  }
 
-    envelope.classList.toggle('open');
+  e.preventDefault();
 
-    launchConfetti(110);
+  envelope.classList.toggle('open');
 
-    for (let i = 0; i < 15; i++) {
-        createConfettiHeart();
-    }
+  launchConfetti(110);
+
+  for (let i = 0; i < 15; i++) {
+    createConfettiHeart();
+  }
 });
 
+envelope.addEventListener('pointercancel', () => {
+  envelopeMoved = true;
+});
         // ------------------------------------------------------------
         // 🎁 Gift
         // ------------------------------------------------------------
