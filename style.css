@@ -476,12 +476,14 @@ body {
         transform 0.4s ease 0s,
         height 0.4s ease 0s;
     overflow: hidden;
+
 }
 
 .letter-text {
+    font-family: 'Caveat', 'Dancing Script', cursive;
     color: #444;
     line-height: 1.6;
-    font-size: 0.65rem;
+    font-size: 1rem;
     margin: 0;
     word-break: break-word;
 }
@@ -521,7 +523,7 @@ body {
 }
 
 .envelope-wrapper.open .letter .letter-text {
-    font-size: 0.85rem;
+    font-size: 1.2rem;
     line-height: 1.6;
 }
 
