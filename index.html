@@ -6,6 +6,87 @@
     <title>Happy Birthday, My Love!</title>
     <!-- Connected to standard style.css for clean repository management -->
     <link rel="stylesheet" href="style.css">
+<style id="ios-letter-scroll-fix">
+/* =========================================================
+   iOS LETTER SCROLL FIX
+   Gives the opened letter its own native scrolling surface.
+   ========================================================= */
+
+.envelope-section,
+.envelope-wrapper {
+    overflow: visible;
+}
+
+.envelope-wrapper {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* The actual letter becomes a bounded scroll container. */
+.envelope-wrapper .letter {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+    max-height: min(62vh, 520px);
+    max-height: min(62dvh, 520px);
+    scrollbar-width: thin;
+}
+
+/* Keep the text comfortably inside the scroll area. */
+.envelope-wrapper .letter-text {
+    margin: 0;
+    padding-bottom: 18px;
+}
+
+/* Make the signature stay part of the scrollable content. */
+.envelope-wrapper .signature {
+    padding-bottom: 20px;
+}
+
+/* Smaller iPhones need a little more room. */
+@media (max-width: 480px) {
+    .envelope-wrapper .letter {
+        max-height: 56vh;
+        max-height: 56dvh;
+        min-height: 180px;
+        padding: 18px 16px !important;
+    }
+}
+
+/* Very small screens. */
+@media (max-height: 700px) and (max-width: 480px) {
+    .envelope-wrapper .letter {
+        max-height: 48vh;
+        max-height: 48dvh;
+    }
+}
+
+/* Prevent the envelope itself from interpreting vertical swipes
+   as an open/close gesture once the letter is open. */
+.envelope-wrapper.open {
+    touch-action: pan-y;
+}
+
+.envelope-wrapper.open .letter {
+    touch-action: pan-y !important;
+}
+
+/* Make the scroll bar subtle but usable. */
+.envelope-wrapper .letter::-webkit-scrollbar {
+    width: 5px;
+}
+
+.envelope-wrapper .letter::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.envelope-wrapper .letter::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: rgba(255, 77, 109, 0.35);
+}
+</style>
+
 </head>
 <body>
 
@@ -452,10 +533,41 @@
 
         const envelope = document.getElementById('envelope');
 
+        let envelopePointerStartX = 0;
+        let envelopePointerStartY = 0;
+
+        envelope.addEventListener('pointerdown', (e) => {
+            envelopePointerStartX = e.clientX;
+            envelopePointerStartY = e.clientY;
+        }, { passive: true });
+
         envelope.addEventListener('pointerup', (e) => {
+            const dx = e.clientX - envelopePointerStartX;
+            const dy = e.clientY - envelopePointerStartY;
+            const moved = Math.hypot(dx, dy) > 10;
+
+            // IMPORTANT FOR iOS:
+            // If the letter is open, let vertical swipes scroll the letter.
+            // Do not toggle the envelope when the finger moved.
+            if (envelope.classList.contains('open') && moved) {
+                return;
+            }
+
+            // A tap inside the letter should not close/re-toggle the envelope.
+            if (envelope.classList.contains('open') && e.target.closest('.letter')) {
+                return;
+            }
+
             e.preventDefault();
 
             envelope.classList.toggle('open');
+
+            // Reset the letter scroll position when opening it.
+            if (envelope.classList.contains('open')) {
+                const letter = envelope.querySelector('.letter');
+                if (letter) letter.scrollTop = 0;
+            }
+
             launchConfetti(110);
 
             // Keep the heart effect too.
